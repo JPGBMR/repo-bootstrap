@@ -1,0 +1,32 @@
+name: Lint and Test — repo-bootstrap
+
+on:
+  push:
+    branches:
+      - 'feat/C-001-*'
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install linting tools
+        run: |
+          pip install --quiet yamllint
+          sudo apt-get install -y --quiet shellcheck
+
+      - name: YAML lint — project-publisher.yml
+        run: yamllint .github/workflows/project-publisher.yml
+
+      - name: Shell lint — all scripts
+        run: shellcheck scripts/*.sh
+
+      - name: Run test suite
+        run: bash tests/test_build.sh

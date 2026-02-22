@@ -1,0 +1,109 @@
+name: Project Publisher
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  publish:
+    # Only run when the 'publish-project' label is applied to the issue
+    if: contains(github.event.label.name, 'publish-project')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      # Checkout repo-bootstrap first so scripts/ is available at the workspace root
+      - name: Checkout repo-bootstrap
+        uses: actions/checkout@v4
+
+      # Write issue body to a temp file — safe against newlines and shell-unsafe chars.
+      # Assigning ${{ github.event.issue.body }} directly to a bash variable breaks on
+      # multi-line content. Passing through env and writing with printf is the safe pattern.
+      - name: Write issue body to file
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: printf '%s' "$ISSUE_BODY" > issue_body.json
+
+      # Parse the three required metadata fields from the JSON issue body
+      - name: Parse issue metadata
+        id: meta
+        run: |
+          NAME=$(python3 -c "import json; d=json.load(open('issue_body.json')); print(d['name'])")
+          STACK=$(python3 -c "import json; d=json.load(open('issue_body.json')); print(d['stack'])")
+          DESC=$(python3 -c "import json; d=json.load(open('issue_body.json')); print(d['description'])")
+          # name and stack are single-word tokens — simple key=value is safe
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "stack=$STACK" >> "$GITHUB_OUTPUT"
+          # desc uses the multiline delimiter format — guards against any future value
+          # that contains a newline (GitHub's recommended pattern for untrusted input)
+          { echo "desc<<DELIM"; echo "$DESC"; echo "DELIM"; } >> "$GITHUB_OUTPUT"
+
+      # Pull the existing source from the Catalitium public portfolio account.
+      # All Catalitium repos must be public — a private repo will 404 here (not 401).
+      - name: Checkout source from Catalitium
+        uses: actions/checkout@v4
+        with:
+          repository: Catalitium/${{ steps.meta.outputs.name }}
+          token: ${{ secrets.GH_TOKEN }}
+          path: project-source
+
+      # Inject README.md and .gitignore into the source if either is missing.
+      # All step inputs pass through env vars to avoid shell injection from expression output.
+      - name: Generate missing files
+        env:
+          PROJECT: ${{ steps.meta.outputs.name }}
+          STACK: ${{ steps.meta.outputs.stack }}
+          DESC: ${{ steps.meta.outputs.desc }}
+        run: bash scripts/generate-files.sh "$PROJECT" "$STACK" "$DESC" project-source
+
+      # Create the public destination repo on JPGBMR.
+      # --confirm flag removed entirely — it was dropped in gh CLI v2 and hard-fails on
+      # ubuntu-latest. The || echo handles the case where the repo already exists.
+      - name: Create destination repo on JPGBMR
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PROJECT: ${{ steps.meta.outputs.name }}
+          DESC: ${{ steps.meta.outputs.desc }}
+        run: |
+          gh repo create "JPGBMR/$PROJECT" \
+            --public \
+            --description "$DESC" \
+            || echo "Repo already exists, continuing"
+
+      # Push the Catalitium source to the newly created JPGBMR repo.
+      # Force-push is intentional — this is always an initial publish, not an update.
+      - name: Push code to destination repo
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PROJECT: ${{ steps.meta.outputs.name }}
+        run: |
+          cd project-source
+          git config user.name "JPGBMR Bot"
+          git config user.email "bot@jpgbmr.dev"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/JPGBMR/${PROJECT}.git"
+          git checkout -b main 2>/dev/null || git checkout main
+          git add .
+          git commit -m "Initial release — published via repo-bootstrap pipeline" \
+            || echo "Nothing to commit"
+          git push -u origin main --force
+
+      # Tag the destination repo with stack-appropriate topics for discoverability
+      - name: Set repo topics
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PROJECT: ${{ steps.meta.outputs.name }}
+          STACK: ${{ steps.meta.outputs.stack }}
+        run: bash scripts/set-topics.sh "$PROJECT" "$STACK"
+
+      # Close the triggering issue and link to the published repo as an audit record
+      - name: Close issue on success
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PROJECT: ${{ steps.meta.outputs.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue close "$ISSUE_NUMBER" \
+            --repo JPGBMR/repo-bootstrap \
+            --comment "Published successfully → https://github.com/JPGBMR/${PROJECT}"
