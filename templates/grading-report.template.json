@@ -1,0 +1,41 @@
+{
+  "template_name": "grading_report",
+  "template_version": "1.0.0",
+  "template_updated_at": "2026-02-23T00:00:00Z",
+  "source_spec": "C-014-01",
+  "score_model": {
+    "scale": "0-100",
+    "weights": {
+      "acceptance_coverage": 40,
+      "correctness_and_regression": 25,
+      "evidence_quality": 20,
+      "github_delivery_state": 15
+    }
+  },
+  "scores": {
+    "acceptance_coverage": 0,
+    "correctness_and_regression": 0,
+    "evidence_quality": 0,
+    "github_delivery_state": 0
+  },
+  "total_score": 0,
+  "grade": "F",
+  "grade_map": {
+    "A": "90-100",
+    "B": "80-89",
+    "C": "70-79",
+    "D": "60-69",
+    "F": "0-59"
+  },
+  "release_thresholds": {
+    "ship": "85-100 and no critical/high findings",
+    "rework": "60-84 or any high finding",
+    "escalate": "0-59 or blocked/ambiguous dependency"
+  },
+  "release_recommendation": "escalate",
+  "rationale": "Insufficient score and/or blocking concerns.",
+  "scoring_notes": [
+    "Use only observed evidence.",
+    "Do not award points for missing or inferred proof."
+  ]
+}

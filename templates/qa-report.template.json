@@ -1,0 +1,61 @@
+{
+  "template_name": "qa_report",
+  "template_version": "1.0.0",
+  "template_updated_at": "2026-02-23T00:00:00Z",
+  "agent": "athena01",
+  "type": "qa_report",
+  "source_spec": "C-014-01",
+  "qa_status": "pass",
+  "summary": "All acceptance criteria verified with reproducible evidence.",
+  "findings": [
+    {
+      "severity": "low",
+      "area": "example/file-or-feature",
+      "issue": "Minor naming inconsistency.",
+      "evidence": "Observed in file header and UI label mismatch.",
+      "expected": "Names should be consistent across docs and UI."
+    }
+  ],
+  "acceptance_verification": [
+    {
+      "criterion": "Feature X behaves per blueprint.",
+      "result": "pass",
+      "evidence": "Action run + observed output."
+    }
+  ],
+  "github_verification": {
+    "workflow_run": "pass",
+    "required_checks": "pass",
+    "artifacts": "pass",
+    "diff_alignment": "pass",
+    "notes": [
+      "Workflow completed successfully.",
+      "Claimed changed files match observed diff."
+    ]
+  },
+  "grading_report": {
+    "weights": {
+      "acceptance_coverage": 40,
+      "correctness_and_regression": 25,
+      "evidence_quality": 20,
+      "github_delivery_state": 15
+    },
+    "scores": {
+      "acceptance_coverage": 38,
+      "correctness_and_regression": 24,
+      "evidence_quality": 18,
+      "github_delivery_state": 15
+    },
+    "total_score": 95,
+    "grade": "A",
+    "release_recommendation": "ship",
+    "rationale": "Passes threshold and no critical/high findings."
+  },
+  "routing_decision": {
+    "route_to": "none",
+    "reason": "Quality gate passed.",
+    "message_to_x_agent": "No further action required."
+  },
+  "retest_focus": [],
+  "blockers": []
+}

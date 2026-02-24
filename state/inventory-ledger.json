@@ -1,0 +1,242 @@
+[
+  {
+    "context_id": "E-017-01",
+    "spec_id": "C-017-01",
+    "wave_id": "wave-a",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T22:45:37Z",
+    "context_ref": "dashboard-shell"
+  },
+  {
+    "context_id": "E-017-02",
+    "spec_id": "C-017-02",
+    "wave_id": "wave-a",
+    "stage": "qa",
+    "owner": "athena",
+    "status": "blocked",
+    "timestamp": "2026-02-24T22:49:10Z",
+    "context_ref": "schema-validation"
+  },
+  {
+    "context_id": "E-018-01",
+    "spec_id": "C-018-01",
+    "wave_id": "wave-c",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T22:56:35Z",
+    "context_ref": "graphing-calculator"
+  },
+  {
+    "context_id": "E-018-02",
+    "spec_id": "C-018-02",
+    "wave_id": "wave-c",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T22:57:44Z",
+    "context_ref": "matrix-calculator"
+  },
+  {
+    "context_id": "E-018-03",
+    "spec_id": "C-018-03",
+    "wave_id": "wave-c",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T22:58:39Z",
+    "context_ref": "particle-galaxy"
+  },
+  {
+    "context_id": "E-018-04",
+    "spec_id": "C-018-04",
+    "wave_id": "wave-c",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T22:59:35Z",
+    "context_ref": "solar-system"
+  },
+  {
+    "context_id": "E-018-05",
+    "spec_id": "C-018-05",
+    "wave_id": "wave-c",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:00:46Z",
+    "context_ref": "terrain-generator"
+  },
+  {
+    "context_id": "E-018",
+    "spec_id": "C-018",
+    "wave_id": "wave-c",
+    "stage": "done",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:01:00Z",
+    "context_ref": "wave-c built=5 remaining=0"
+  },
+  {
+    "context_id": "E-019-01",
+    "spec_id": "C-019-01",
+    "wave_id": "wave-d",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "blocked",
+    "timestamp": "2026-02-24T23:20:00Z",
+    "context_ref": "linear-solver-tri-stack-cpp-runtime-missing"
+  },
+  {
+    "context_id": "E-019-02",
+    "spec_id": "C-019-02",
+    "wave_id": "wave-d",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "blocked",
+    "timestamp": "2026-02-24T23:24:00Z",
+    "context_ref": "fourier-visualizer-tri-stack-cpp-runtime-missing"
+  },
+  {
+    "context_id": "E-019-03",
+    "spec_id": "C-019-03",
+    "wave_id": "wave-d",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:27:00Z",
+    "context_ref": "complex-plane-mvp"
+  },
+  {
+    "context_id": "E-019-04",
+    "spec_id": "C-019-04",
+    "wave_id": "wave-d",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:30:00Z",
+    "context_ref": "laplace-visualizer-mvp"
+  },
+  {
+    "context_id": "E-019-05",
+    "spec_id": "C-019-05",
+    "wave_id": "wave-d",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:34:00Z",
+    "context_ref": "fluid-sim-mvp"
+  },
+  {
+    "context_id": "E-019",
+    "spec_id": "C-019",
+    "wave_id": "wave-d",
+    "stage": "qa",
+    "owner": "athena",
+    "status": "blocked",
+    "timestamp": "2026-02-24T23:12:41Z",
+    "context_ref": "qa-blocked-cpp-runtime-missing-c019-01-c019-02"
+  },
+  {
+    "context_id": "E-022-01",
+    "spec_id": "C-022-01",
+    "wave_id": "wave-e022",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:20:20Z",
+    "context_ref": "threejs-mini-wave-pack"
+  },
+  {
+    "context_id": "E-022-02",
+    "spec_id": "C-022-02",
+    "wave_id": "wave-e022",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:21:20Z",
+    "context_ref": "fractal-tree-mvp"
+  },
+  {
+    "context_id": "E-022-03",
+    "spec_id": "C-022-03",
+    "wave_id": "wave-e022",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:22:20Z",
+    "context_ref": "gravity-sim-mvp"
+  },
+  {
+    "context_id": "E-022-04",
+    "spec_id": "C-022-04",
+    "wave_id": "wave-e022",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:23:20Z",
+    "context_ref": "matrix-rain-3d-mvp"
+  },
+  {
+    "context_id": "E-022",
+    "spec_id": "C-022",
+    "wave_id": "wave-e022",
+    "stage": "qa",
+    "owner": "athena",
+    "status": "blocked",
+    "timestamp": "2026-02-24T23:25:20Z",
+    "context_ref": "qa-blocked-github-evidence-unavailable"
+  },
+  {
+    "context_id": "E-025-01",
+    "spec_id": "C-025-01",
+    "wave_id": "wave-e025",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:33:51Z",
+    "context_ref": "remaining-wip-batch-pack"
+  },
+  {
+    "context_id": "E-025-02",
+    "spec_id": "C-025-02",
+    "wave_id": "wave-e025",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:34:51Z",
+    "context_ref": "api-builder+waitlist-platform"
+  },
+  {
+    "context_id": "E-025-03",
+    "spec_id": "C-025-03",
+    "wave_id": "wave-e025",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:35:51Z",
+    "context_ref": "compliance-auto+screenshot-docs"
+  },
+  {
+    "context_id": "E-025-04",
+    "spec_id": "C-025-04",
+    "wave_id": "wave-e025",
+    "stage": "build",
+    "owner": "vitalic",
+    "status": "pass",
+    "timestamp": "2026-02-24T23:36:51Z",
+    "context_ref": "niche-job-board"
+  },
+  {
+    "context_id": "E-025-05",
+    "spec_id": "C-025-05",
+    "wave_id": "wave-e025",
+    "stage": "qa",
+    "owner": "athena",
+    "status": "blocked",
+    "timestamp": "2026-02-24T23:38:51Z",
+    "context_ref": "qa-blocked-github-evidence-unavailable-target-five-closed"
+  }
+]

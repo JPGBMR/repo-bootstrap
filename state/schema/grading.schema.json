@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_id",
+    "spec_id",
+    "status",
+    "recommendation",
+    "timestamp",
+    "local_build_grade",
+    "github_ops_grade",
+    "github_gate"
+  ],
+  "properties": {
+    "context_id": {
+      "type": "string",
+      "pattern": "^E-\\d{3}(?:-\\d{2})?$",
+      "x_validation_message": "context_id must be canonical: E-### or E-###-NN"
+    },
+    "spec_id": { "type": "string", "pattern": "^C-\\d{3}(?:-[A-Z0-9-]+)?$" },
+    "status": { "type": "string", "enum": ["pass", "fail", "blocked", "unknown"] },
+    "recommendation": { "type": "string", "enum": ["ship", "rework", "escalate", "blocked"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "github_gate": { "type": "string", "enum": ["pass", "blocked", "unknown"] },
+    "blocked_reason_code": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+    "compatibility_marker": { "type": "string", "enum": ["legacy"] },
+    "local_build_grade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "recommendation", "weighted_components"],
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "recommendation": { "type": "string", "enum": ["ship", "rework", "escalate", "blocked"] },
+        "blocked_reason": { "type": "string", "minLength": 1 },
+        "weighted_components": { "type": "object", "additionalProperties": true, "required": [] }
+      }
+    },
+    "github_ops_grade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "recommendation", "weighted_components"],
+      "properties": {
+        "score": { "type": "number", "minimum": 0, "maximum": 100 },
+        "recommendation": { "type": "string", "enum": ["ship", "rework", "escalate", "blocked"] },
+        "blocked_reason": { "type": "string", "minLength": 1 },
+        "weighted_components": { "type": "object", "additionalProperties": true, "required": [] }
+      }
+    }
+  },
+  "x_rules": [
+    "If github_gate=blocked, blocked_reason_code is required.",
+    "If github_gate is pass or unknown, blocked_reason_code must be omitted.",
+    "Narrative-only github status fields are not allowed."
+  ]
+}
