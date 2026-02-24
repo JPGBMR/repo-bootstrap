@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "entry_type",
+    "agent",
+    "context_id",
+    "stage",
+    "status",
+    "timestamp",
+    "message",
+    "refs",
+    "github_gate"
+  ],
+  "properties": {
+    "entry_type": { "type": "string", "enum": ["event", "evidence"] },
+    "agent": { "type": "string", "enum": ["elena", "colombo", "vitalic", "athena"] },
+    "context_id": {
+      "type": "string",
+      "pattern": "^E-\\d{3}(?:-\\d{2})?$",
+      "x_validation_message": "context_id must be canonical: E-### or E-###-NN"
+    },
+    "stage": { "type": "string", "enum": ["plan", "blueprint", "build", "qa", "route", "done"] },
+    "status": { "type": "string", "enum": ["pass", "fail", "blocked", "unknown"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "message": { "type": "string", "minLength": 1 },
+    "refs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "summary_scope": { "type": "string", "enum": ["wave"] },
+    "github_gate": { "type": "string", "enum": ["pass", "blocked", "unknown"] },
+    "blocked_reason_code": { "type": "string", "pattern": "^[A-Z0-9_]+$" },
+    "compatibility_marker": { "type": "string", "enum": ["legacy"] }
+  },
+  "x_rules": [
+    "If github_gate=blocked, blocked_reason_code is required.",
+    "If github_gate is pass or unknown, blocked_reason_code must be omitted."
+  ]
+}

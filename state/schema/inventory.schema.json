@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "context_id",
+    "spec_id",
+    "wave_id",
+    "stage",
+    "owner",
+    "status",
+    "timestamp",
+    "context_ref"
+  ],
+  "properties": {
+    "context_id": {
+      "type": "string",
+      "pattern": "^E-\\d{3}(?:-\\d{2})?$",
+      "x_validation_message": "context_id must be canonical: E-### or E-###-NN"
+    },
+    "spec_id": { "type": "string", "pattern": "^C-\\d{3}(?:-[A-Z0-9-]+)?$" },
+    "wave_id": { "type": "string", "minLength": 1 },
+    "stage": { "type": "string", "enum": ["plan", "blueprint", "build", "qa", "route", "done"] },
+    "owner": { "type": "string", "enum": ["elena", "colombo", "vitalic", "athena"] },
+    "status": { "type": "string", "enum": ["pass", "fail", "blocked", "unknown"] },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "context_ref": { "type": "string", "minLength": 1 },
+    "compatibility_marker": { "type": "string", "enum": ["legacy"] }
+  }
+}

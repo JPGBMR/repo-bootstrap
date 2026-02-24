@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mission Control Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="card">
+      <h1>Mission Control</h1>
+      <p class="sub">Local-first control plane using state files only.</p>
+      <p class="constraint">No backend, no websocket, no framework migration.</p>
+      <div id="kpiBar" class="kpi-bar"></div>
+      <p id="nextAction" class="next-action"></p>
+    </header>
+
+    <section class="card" aria-labelledby="trustTitle">
+      <h2 id="trustTitle">Data Trust</h2>
+      <div id="trustStats" class="trust-grid"></div>
+      <ul id="trustIssues" class="issues"></ul>
+    </section>
+
+    <section class="card" aria-labelledby="filtersTitle">
+      <h2 id="filtersTitle">Filters</h2>
+      <div class="filters">
+        <label>Status
+          <select id="statusFilter">
+            <option value="all">All</option>
+            <option value="blocked">Blocked</option>
+            <option value="pass">Pass</option>
+            <option value="fail">Fail</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </label>
+        <label>Agent
+          <select id="agentFilter">
+            <option value="all">All</option>
+            <option value="elena">Elena</option>
+            <option value="colombo">Colombo</option>
+            <option value="vitalic">Vitalik</option>
+            <option value="athena">Athena</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </label>
+        <label>Wave
+          <select id="waveFilter"><option value="all">All</option></select>
+        </label>
+        <label>Search
+          <input id="searchFilter" type="text" placeholder="context, spec, message">
+        </label>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Mission Lanes</h2>
+      <div id="laneGrid" class="lane-grid"></div>
+      <p id="needsMapping" class="hint"></p>
+    </section>
+
+    <section class="grid-2">
+      <article class="card" aria-labelledby="summaryTitle">
+        <h2 id="summaryTitle">Agent Wave Summaries</h2>
+        <ul id="summaryList" class="list"></ul>
+        <p id="summaryEmpty" class="empty">No summary rows.</p>
+      </article>
+
+      <article class="card" aria-labelledby="contextsTitle">
+        <h2 id="contextsTitle">Contexts</h2>
+        <ul id="contextList" class="list"></ul>
+        <p id="contextEmpty" class="empty">No contexts for current filters.</p>
+      </article>
+    </section>
+
+    <section class="card" aria-labelledby="needsActionTitle">
+      <h2 id="needsActionTitle">Needs Action</h2>
+      <ul id="needsActionList" class="list"></ul>
+      <p id="needsActionEmpty" class="empty">No blocked actions pending.</p>
+    </section>
+
+    <section class="grid-2">
+      <article class="card" aria-labelledby="decisionTitle">
+        <h2 id="decisionTitle">Latest Decision</h2>
+        <div id="latestDecision" class="decision"></div>
+      </article>
+      <article class="card" aria-labelledby="timelineTitle">
+        <h2 id="timelineTitle">Timeline (Newest 20)</h2>
+        <ul id="timeline" class="timeline"></ul>
+        <p id="timelineEmpty" class="empty">Select a context to inspect timeline.</p>
+      </article>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

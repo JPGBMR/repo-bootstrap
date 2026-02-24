@@ -1,0 +1,263 @@
+[
+  {
+    "context_id": "E-017-01",
+    "spec_id": "C-017-01",
+    "status": "pass",
+    "recommendation": "ship",
+    "timestamp": "2026-02-24T22:50:00Z",
+    "local_build_grade": {
+      "score": 90,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 35,
+        "correctness": 35,
+        "maintainability": 20
+      }
+    },
+    "github_ops_grade": {
+      "score": 86,
+      "recommendation": "ship",
+      "weighted_components": {
+        "checks": 30,
+        "artifacts": 28,
+        "alignment": 28
+      }
+    }
+  },
+  {
+    "context_id": "E-017-02",
+    "spec_id": "C-017-02",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T22:52:00Z",
+    "local_build_grade": {
+      "score": 72,
+      "recommendation": "blocked",
+      "blocked_reason": "Malformed ledger examples injected for QH-017-02",
+      "weighted_components": {
+        "quality": 26,
+        "correctness": 24,
+        "maintainability": 22
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub checks unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-019",
+    "spec_id": "C-019",
+    "status": "blocked",
+    "recommendation": "escalate",
+    "timestamp": "2026-02-24T23:12:41Z",
+    "local_build_grade": {
+      "score": 60,
+      "recommendation": "blocked",
+      "blocked_reason": "Tri-stack parity blocked: C++ compiler unavailable for C-019-01 and C-019-02.",
+      "weighted_components": {
+        "acceptance_coverage": 24,
+        "correctness_and_regression": 20,
+        "evidence_quality": 16
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment.",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-022-02",
+    "spec_id": "C-022-02",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:25:20Z",
+    "local_build_grade": {
+      "score": 89,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 31,
+        "correctness": 34,
+        "maintainability": 24
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-022-03",
+    "spec_id": "C-022-03",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:25:20Z",
+    "local_build_grade": {
+      "score": 87,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 30,
+        "correctness": 33,
+        "maintainability": 24
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-022-04",
+    "spec_id": "C-022-04",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:25:20Z",
+    "local_build_grade": {
+      "score": 88,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 31,
+        "correctness": 33,
+        "maintainability": 24
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-025-02",
+    "spec_id": "C-025-02",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:38:51Z",
+    "local_build_grade": {
+      "score": 90,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 32,
+        "correctness": 34,
+        "maintainability": 24
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-025-03",
+    "spec_id": "C-025-03",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:38:51Z",
+    "local_build_grade": {
+      "score": 89,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 31,
+        "correctness": 34,
+        "maintainability": 24
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-025-04",
+    "spec_id": "C-025-04",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:38:51Z",
+    "local_build_grade": {
+      "score": 88,
+      "recommendation": "ship",
+      "weighted_components": {
+        "quality": 31,
+        "correctness": 33,
+        "maintainability": 24
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  },
+  {
+    "context_id": "E-025-05",
+    "spec_id": "C-025-05",
+    "status": "blocked",
+    "recommendation": "blocked",
+    "timestamp": "2026-02-24T23:38:51Z",
+    "local_build_grade": {
+      "score": 87,
+      "recommendation": "ship",
+      "weighted_components": {
+        "evidence_quality": 29,
+        "state_alignment": 30,
+        "maintainability": 28
+      }
+    },
+    "github_ops_grade": {
+      "score": 0,
+      "recommendation": "blocked",
+      "blocked_reason": "GitHub workflow/check/artifact evidence unavailable in local-only environment",
+      "weighted_components": {
+        "checks": 0,
+        "artifacts": 0,
+        "alignment": 0
+      }
+    }
+  }
+]
